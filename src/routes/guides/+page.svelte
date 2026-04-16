@@ -2,16 +2,23 @@
 let guides = [
         {
             title: "Altamont Gardens",
-            description: "Beautiful gardens with revers and walking paths."
+            description: "Beautiful gardens with revers and walking paths.",
+            link:"https://www.altamontgarden.com",
+            image:"/images/Guides_Page/altamon_garden.jpg"
         },
         {
             title: "Brownshill Dolmen",
-            description: "One of the largest dolmens in Ireland."
-        },
+            description: "One of the largest dolmens in Ireland.",
+            link:"https://heritageireland.ie/unguided-sites/brownshill-portal-dolmen/",
+            image:"/images/Guides_Page/brownshill_dolmen.jpg"
+        
+          },
         {
             title: "Carlow Castle",
-            description: "A historic castle in Carlow town"
-        }
+            description: "A historic castle in Carlow town",
+            link: "https://heritageireland.ie/unguided-sites/carlow-castle/",
+            image:"/images/Guides_Page/carlow_castle.jpg"
+        },
         
     ];
 </script>
@@ -23,10 +30,17 @@ let guides = [
 <div class="guides">
 {#each guides as guide}
   <div class="card">
-  <div class ="image-box">Image</div>
+  <div class ="image-box">
+    <img src={guide.image}
+    alt={guide.title}/>
+  </div>
     <h3>{guide.title}</h3>
     <p>{guide.description}</p>
-    <button> View Guide</button>
+
+    <a href={guide.link} target="_blank"
+    class="btn">
+     View Guide
+      </a>
 
   </div>
   {/each}
@@ -66,12 +80,14 @@ let guides = [
     margin-bottom: 10px;
   }
 
-  button {
+  .btn {
+    display: inline-block;
     background: #2e7d32;
     color:white;
     border:none;
-    padding: 10px,16px;
+    padding: 10px 16px;
     border-radius: 8px;
+    text-decoration: none;
     cursor: pointer;
     margin-top: 10px;
   }
@@ -80,11 +96,13 @@ let guides = [
   }
   .image-box {
     height:140px;
-    background: #f0f0f0;
+    overflow: hidden;
     border-radius: 8px;
     margin-bottom: 12px;
-    display:flex;
-    align-items: center;
-    justify-content: center;
+  }
+  .image-box img{
+    width: 100%;
+    height:100%;
+    object-fit: cover;
   }
 </style>
