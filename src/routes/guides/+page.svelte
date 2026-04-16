@@ -23,8 +23,10 @@ let guides = [
 <div class="guides">
 {#each guides as guide}
   <div class="card">
+  <div class ="image-box">Image</div>
     <h3>{guide.title}</h3>
     <p>{guide.description}</p>
+    <button> View Guide</button>
 
   </div>
   {/each}
@@ -62,5 +64,27 @@ let guides = [
 
   .card h3 {
     margin-bottom: 10px;
+  }
+
+  button {
+    background: #2e7d32;
+    color:white;
+    border:none;
+    padding: 10px,16px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  button:hover {
+    background: #1f5c24;
+  }
+  .image-box {
+    height:140px;
+    background: #f0f0f0;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
   }
 </style>
