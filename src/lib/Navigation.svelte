@@ -3,11 +3,11 @@
     
 
     const navigationItems = [
-        { name: 'About', path: '/about' },
-        { name: 'Things to Do', path: '/things-to-do' },
-        { name: 'Guides', path: '/guides' },
-        { name: 'User Reviews', path: '/user-reviews' },
-        { name: 'Contact Us', path: '/contact' }
+        { name: 'About', path: '/about/' },
+        { name: 'Things to Do', path: '/things-to-do/' },
+        { name: 'Guides', path: '/guides/' },
+        { name: 'User Reviews', path: '/user-reviews/' },
+        { name: 'Contact Us', path: '/contact/' }
     ];
 
     let isOpen = false;
@@ -89,7 +89,7 @@
         bottom: 0;
         height: 2px;
         width: 100%;
-        background: var(--color-secondary);
+        background: var(--color-accent);
         transform: scaleX(0);
         transform-origin: left;
         transition: transform var(--transition-fast);
@@ -106,7 +106,7 @@
     }
 
     .nav a.active {
-        color: var(--color-primary);
+        color: var(--color-accent);
     }
 
     .nav a.active::after {
