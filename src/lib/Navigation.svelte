@@ -1,12 +1,13 @@
 <script>
     import { page } from '$app/state';
-    import { resolve } from '$app/paths';
     
 
     const navigationItems = [
-        { name: 'Home', path: '/' },
-        { name: 'Catalogue', path: '/catalogue' },
-        { name: 'About', path: '/about' }
+        { name: 'About', path: '/about' },
+        { name: 'Things to Do', path: '/things-to-do' },
+        { name: 'Guides', path: '/guides' },
+        { name: 'User Reviews', path: '/user-reviews' },
+        { name: 'Contact Us', path: '/contact' }
     ];
 
     let isOpen = false;
@@ -32,8 +33,8 @@
         {#each navigationItems as item}
             <li class="nav-item">
                 <a 
-                    href={resolve(item.path)}
-                    class:active={page.url.pathname === resolve(item.path)}
+                    href={item.path}
+                    class:active={page.url.pathname === item.path}
                     on:click={hideMenu}
                 >{item.name}</a>
             </li>
@@ -45,7 +46,7 @@
 <style>
     .nav {
         display: flex;
-        justify-content: flex-end;
+        justify-content: center;
         align-items: center;
         width: 100%;
         gap: var(--space-lg);
@@ -75,7 +76,7 @@
         font-family: var(--font-body);
         font-size: var(--font-lg);
         font-weight: 600;
-        color: var(--text-primary);
+        color: var(--text-contrast);
         padding: var(--space-xs) var(--space-sm);
         text-decoration: none;
         transition: color var(--transition-fast);
@@ -101,7 +102,7 @@
 
     .nav a:hover,
     .nav a:focus {
-        color: var(--color-secondary);
+        color: var(--color-accent);
     }
 
     .nav a.active {
@@ -110,9 +111,7 @@
 
     .nav a.active::after {
         transform: scaleX(1);
-        background: var(--gradient-brand);
-        background-size: 200%;
-        animation: slideGradient 4s linear infinite;
+        background: var(--color-accent);
     }
 
     .burger {
@@ -120,7 +119,7 @@
         font-size: var(--font-xl);
         background: none;
         border: none;
-        color: var(--text-primary);
+        color: var(--color-text);
         padding: var(--space-xs);
         cursor: pointer;
         margin-left: auto;

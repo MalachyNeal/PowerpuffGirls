@@ -121,7 +121,7 @@
 
     .inspire-button {
         padding: var(--space-sm) var(--space-lg);
-        background-color: var(--color-accent);
+        background-color: var(--color-primary);
         color: var(--text-contrast);
         font-size: var(--font-base);
         font-weight: 600;
@@ -133,7 +133,7 @@
 
     .inspire-button:hover,
     .inspire-button:focus {
-        background-color: var(--color-highlight);
+        background-color: var(--color-secondary);
     }
 
     /* Featured Section */

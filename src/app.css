@@ -5,10 +5,16 @@
     --color-secondary: #1B4332;
     --color-background: #FFFFFF;
     --color-text: #1F1F1F;
+    --color-text-light: #FFFFFF;
     --color-accent: #6FA8DC;
 
     --font-heading: 'Poppins', sans-serif;
     --font-body: 'Open Sans', sans-serif;
+    --font-lg: 1.25rem;
+    --font-xl: 1.75rem;
+
+    --transition-fast: 0.2s ease;
+    --transition-slow: 0.4s ease;
 
     --space-xs: 0.5rem;
     --space-sm: 0.75rem;
