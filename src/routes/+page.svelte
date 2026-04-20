@@ -82,6 +82,15 @@
             {/each}
         </div>
      </section>
+
+     <!-- Plan Visit Section -->
+      <section class="visit-section">
+        <h2>Plan Your Visit</h2>
+        <p> Looking for more information before your trip? 
+            See our contact page and start planning your visit to Carlow.
+        </p>
+        <a class="visit-button" href="/contact/">Contact Us</a>
+      </section>
 </div>
 
 
@@ -134,15 +143,17 @@
         background-color: var(--color-secondary);
     }
 
-    /* Explore Section */
+    /* Explore, Highlights, and Plan Visit Section */
     .explore-section,
-    .highlights-section {
+    .highlights-section,
+    .visit-section {
         padding: 0 var(--space-md);
         text-align: center;
     }
 
     .explore-section h2,
-    .highlights-section h2 {
+    .highlights-section h2,
+    .visit-section h2 {
         margin-bottom:  var(--space-lg);
     }
 
@@ -180,7 +191,8 @@
         margin-bottom: var(--space-md);
     }
 
-    .section-button {
+    .section-button,
+    .visit-button {
         display: inline-block;
         background-color: var(--color-primary);
         color: var(--text-contrast);
@@ -190,8 +202,19 @@
     }
 
     .section-button:hover,
-    .section-button:focus {
+    .section-button:focus,
+    .visit-button:hover,
+    .visit-button:focus {
         background-color: var(--color-secondary);
+    }
+
+    .visit-section {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .visit-section p {
+        margin-bottom: var(--space-md);
     }
     
     @media (max-width: 1024px) {
