@@ -80,6 +80,23 @@
         selectedCategory = '';
         selectedActivity = '';
     }
+
+    function deleteActivity(id) {
+        let confirmedDelete = confirm('Delete this saved activity?');
+
+        if(confirmedDelete === false) {
+            return;
+        }
+
+        for (let i = 0; i < savedActivities.length; i++) {
+            if (savedActivities[i].id === id) {
+                savedActivities.splice(i, 1);
+                break;
+            }
+        }
+
+        savedActivities = savedActivities;
+    }
 </script>
 
 <svelte:head>
@@ -200,8 +217,13 @@
             <div class="saved-list">
                 {#each savedActivities as activity}
                     <div class="saved-item">
-                        <p class="saved-category">{activity.category}</p>
-                        <p class="saved-name">{activity.name}</p>
+                        <div class="saved-text">
+                            <p class="saved-category">{activity.category}</p>
+                            <p class="saved-name">{activity.name}</p>
+                        </div>
+
+                        <button class="secondary-button" on:click={() => deleteActivity(activity.id)}
+                        aria-label="Delete activity from saved activities">Delete</button>
                     </div>
                 {/each}
             </div>
@@ -347,6 +369,12 @@
         justify-content: space-between;
         align-items: center;
         gap: var(--space-md);
+    }
+
+    .saved-text {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-xs);
     }
 
     .saved-name {
