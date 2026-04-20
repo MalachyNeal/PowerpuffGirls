@@ -525,12 +525,6 @@
             justify-content: center;
         }
 
-        .image-placeholder {
-            width: 300px;
-            max-width: 100%;
-            height: 220px;
-        }
-
         .activity-card {
             width: 100%;
             align-items: center;
