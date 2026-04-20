@@ -51,6 +51,7 @@
         width: 100%;
         gap: var(--space-lg);
         animation: fadeIn var(--transition-slow);
+        position: relative;
     }
 
     .nav ul {
@@ -70,9 +71,11 @@
     .nav-item:nth-child(2) { animation-delay: 0.4s; }
     .nav-item:nth-child(3) { animation-delay: 0.6s; }
     .nav-item:nth-child(4) { animation-delay: 0.8s; }
+    .nav-item:nth-child(5) {animation-delay: 1s; }
 
     .nav a {
         position: relative;
+        display: block;
         font-family: var(--font-body);
         font-size: var(--font-lg);
         font-weight: 600;
@@ -80,6 +83,7 @@
         padding: var(--space-xs) var(--space-sm);
         text-decoration: none;
         transition: color var(--transition-fast);
+        white-space: nowrap;
     }
 
     .nav a::after {
@@ -96,22 +100,15 @@
     }
 
     .nav a:hover::after,
-    .nav a:focus::after {
+    .nav a:focus::after,
+    .nav a.active::after {
         transform: scaleX(1);
     }
 
     .nav a:hover,
-    .nav a:focus {
-        color: var(--color-accent);
-    }
-
+    .nav a:focus,
     .nav a.active {
         color: var(--color-accent);
-    }
-
-    .nav a.active::after {
-        transform: scaleX(1);
-        background: var(--color-accent);
     }
 
     .burger {
@@ -119,23 +116,31 @@
         font-size: var(--font-xl);
         background: none;
         border: none;
-        color: var(--color-text);
+        color: var(--text-contrast);
         padding: var(--space-xs);
         cursor: pointer;
-        margin-left: auto;
+        margin: 0;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 1024px) {
         .nav {
-            flex-direction: column;
-            align-items: flex-start;
+            width: auto;
+            margin-left: auto;
         }
 
         .nav ul {
             display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
             flex-direction: column;
             gap: var(--space-sm);
-            margin-top: var(--space-sm);
+            min-width: 220px;
+            background: var(--color-secondary);
+            padding: var(--space-sm);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-md);
+            z-index: 200;
         }
 
         .nav ul.open {
@@ -155,12 +160,6 @@
             transform: translateX(20px);
             animation: fadeLeft 0.4s ease forwards;
         }
-    }
-
-    @keyframes slideGradient {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 100%; }
-        100% { background-position: 0% 50%; }
     }
 
     @keyframes fadeUp {

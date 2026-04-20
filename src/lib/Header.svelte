@@ -20,7 +20,7 @@
         padding: 0 var(--space-lg);
         background-color: var(--color-secondary);
         box-shadow: var(--shadow-md);
-        border-bottom: var(--border-default);
+        border-bottom: 1px solid var(--color-border);
         position: relative;
         z-index: 100;
     }
@@ -50,17 +50,22 @@
         }
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 1024px) {
         .header {
-            flex-direction: column;
-            align-items: flex-start;
-            padding: var(--space-sm);
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-sm) var(--space-md);
         }
 
         .logo-area {
-            justify-content: center;
-            width: 100%;
+            justify-content: flex-start;
+            width: auto;
         }
 
+        .logo-area img {
+            width: 72px;
+            height: auto;
+        }
     }
 </style>
