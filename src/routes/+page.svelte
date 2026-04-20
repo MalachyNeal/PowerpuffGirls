@@ -3,39 +3,40 @@
 </svelte:head>
 
 <script>
+    import { resolve, asset } from '$app/paths';
    const siteSections = [
     {
         title: 'Things to Do',
         text: 'Browse activities, attractions, shopping places, and popular places across Carlow.',
-        link: '/things-to-do/',
-        image: '/images/homepage/things-to-do.png'
+        link: resolve('/things-to-do/'),
+        image: asset('/images/homepage/things-to-do.png')
     },
     {
         title: 'Guides',
         text: 'Read useful, local guides to help plan your visit and discover more of Carlow.',
-        link: '/guides/',
-        image: '/images/homepage/guides.png'
+        link: resolve('/guides/'),
+        image: asset('/images/homepage/guides.png')
     },
     {
         title: 'User Reviews',
         text: 'See what visitors think and explore experiences shared by other people.',
-        link: '/user-reviews/',
-        image: '/images/homepage/user-reviews.png'
+        link: resolve('/user-reviews/'),
+        image: asset('/images/homepage/user-reviews.png')
     }
    ];
 
    const featuredHighlights = [
     {
         title: 'Brownshill Portal Dolmen',
-        image: '/images/things-to-do/popular-places/dolmen.png'
+        image: asset('/images/things-to-do/popular-places/dolmen.png')
     },
     {
         title: 'The Dome Entertainment Centre',
-        image: '/images/things-to-do/entertainment/dome.png'
+        image: asset('/images/things-to-do/entertainment/dome.png')
     },
     {
         title: 'Carlow Castle',
-        image: '/images/things-to-do/popular-places/castle.png'
+        image: asset('/images/things-to-do/popular-places/castle.png')
     }
    ];
 </script>
@@ -82,7 +83,7 @@
             {/each}
         </div>
 
-        <a class="highlights-button" href="/things-to-do/">GO</a>
+        <a class="highlights-button" href={resolve('/things-to-do/')}>GO</a>
      </section>
 
      <!-- Plan Visit Section -->
@@ -91,7 +92,7 @@
         <p> Looking for more information before your trip? 
             See our contact page and start planning your visit to Carlow.
         </p>
-        <a class="visit-button" href="/contact/">Contact Us</a>
+        <a class="visit-button" href={resolve('/contact/')}>Contact Us</a>
       </section>
 </div>
 

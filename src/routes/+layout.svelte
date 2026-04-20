@@ -37,11 +37,7 @@
         flex-direction: column;
         position: relative;
         isolation: isolate;
-<<<<<<< HEAD
-
-=======
         background-color: var(--color-background);
->>>>>>> d567ee047989d1b08826803df68b532c61bec19f
     }
 
     main::before {
