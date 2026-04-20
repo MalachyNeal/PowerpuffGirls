@@ -1,11 +1,11 @@
 <script>
-    import { asset } from '$app/paths';
+    import { asset, resolve } from '$app/paths';
     import Navigation from './Navigation.svelte';
 </script>
 
 
 <header class="header">
-    <a href="/" class="logo-area">
+    <a href={resolve('/')} class="logo-area">
         <img src={asset("/logo.png")} alt="Site Logo" />
     </a>
     <Navigation />

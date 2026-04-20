@@ -1,23 +1,25 @@
 <script>
+    import { asset } from '$app/paths';
+
     const entertainmentItems = [
-        { id: 1, name: 'IMC Cinema', image: '/images/things-to-do/entertainment/imc-cinema.png' },
-        { id: 2, name: 'The Dome Entertainment Centre', image: '/images/things-to-do/entertainment/dome.png' },
-        { id: 3, name: 'Graiguecullen Swimming Pool', image: '/images/things-to-do/entertainment/pool.png' },
-        { id: 4, name: 'The Foundry Nightclub', image: '/images/things-to-do/entertainment/foundry.png'}
+        { id: 1, name: 'IMC Cinema', image: asset('/images/things-to-do/entertainment/imc-cinema.png') },
+        { id: 2, name: 'The Dome Entertainment Centre', image: asset('/images/things-to-do/entertainment/dome.png') },
+        { id: 3, name: 'Graiguecullen Swimming Pool', image: asset('/images/things-to-do/entertainment/pool.png') },
+        { id: 4, name: 'The Foundry Nightclub', image: asset('/images/things-to-do/entertainment/foundry.png') }
     ];
 
     const popularPlacesItems = [
-        { id: 5, name: 'Brownshill Portal Dolmen', image: '/images/things-to-do/popular-places/dolmen.png' },
-        { id: 6, name: 'Carlow County Museum', image: '/images/things-to-do/popular-places/museum.png' },
-        { id: 7, name: 'Carlow Castle', image: '/images/things-to-do/popular-places/castle.png' },
-        { id: 8, name: "Duckett's Grove", image: '/images/things-to-do/popular-places/ducketts-grove.png' }
+        { id: 5, name: 'Brownshill Portal Dolmen', image: asset('/images/things-to-do/popular-places/dolmen.png') },
+        { id: 6, name: 'Carlow County Museum', image: asset('/images/things-to-do/popular-places/museum.png') },
+        { id: 7, name: 'Carlow Castle', image: asset('/images/things-to-do/popular-places/castle.png') },
+        { id: 8, name: "Duckett's Grove", image: asset('/images/things-to-do/popular-places/ducketts-grove.png') }
     ];
 
     const shoppingItems = [
-        { id: 9, name: 'Carlow Shopping Centre', image: '/images/things-to-do/shopping/carlow-sc.png' },
-        { id: 10, name: 'Fairgreen Shopping Centre', image: '/images/things-to-do/shopping/fairgreen-sc.png' },
-        { id: 11, name: 'Penneys', image: '/images/things-to-do/shopping/penneys.png' },
-        { id: 12, name: 'Haddens Centre', image: '/images/things-to-do/shopping/haddens-centre.png' }
+        { id: 9, name: 'Carlow Shopping Centre', image: asset('/images/things-to-do/shopping/carlow-sc.png') },
+        { id: 10, name: 'Fairgreen Shopping Centre', image: asset('/images/things-to-do/shopping/fairgreen-sc.png') },
+        { id: 11, name: 'Penneys', image: asset('/images/things-to-do/shopping/penneys.png') },
+        { id: 12, name: 'Haddens Centre', image: asset('/images/things-to-do/shopping/haddens-centre.png') }
     ];
 
     let selectedCategory = '';

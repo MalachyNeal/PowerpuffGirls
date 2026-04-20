@@ -1,5 +1,6 @@
 <script>
     import { page } from '$app/state';
+    import { resolve } from '$app/paths';
     
 
     const navigationItems = [
@@ -33,8 +34,8 @@
         {#each navigationItems as item}
             <li class="nav-item">
                 <a 
-                    href={item.path}
-                    class:active={page.url.pathname === item.path}
+                    href={resolve(item.path)}
+                    class:active={page.url.pathname === resolve(item.path)}
                     on:click={hideMenu}
                 >{item.name}</a>
             </li>
