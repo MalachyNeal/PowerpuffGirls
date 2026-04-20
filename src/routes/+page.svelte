@@ -23,6 +23,21 @@
         image: '/images/homepage/user-reviews.png'
     }
    ];
+
+   const featuredHighlights = [
+    {
+        title: 'Brownshill Portal Dolmen',
+        image: '/images/things-to-do/popular-places/dolmen.png'
+    },
+    {
+        title: 'The Dome Entertainment Centre',
+        image: '/images/things-to-do/entertainment/dome.png'
+    },
+    {
+        title: 'Carlow Castle',
+        image: '/images/things-to-do/popular-places/castle.png'
+    }
+   ];
 </script>
 
 <!-- Page Container -->
@@ -53,6 +68,20 @@
             {/each}
         </div>
     </section>
+
+    <!-- Highlights Section -->
+     <section class="highlights-section">
+        <h2>Featured Highlights</h2>
+
+        <div class="highlights-grid">
+            {#each featuredHighlights as item}
+                <div class="highlight-card">
+                    <img src={item.image} alt={item.title} class="highlight-image" />
+                    <h3>{item.title}</h3>
+                </div>
+            {/each}
+        </div>
+     </section>
 </div>
 
 
@@ -106,26 +135,44 @@
     }
 
     /* Explore Section */
-    .explore-section {
+    .explore-section,
+    .highlights-section {
         padding: 0 var(--space-md);
         text-align: center;
     }
 
-    .explore-section h2 {
+    .explore-section h2,
+    .highlights-section h2 {
         margin-bottom:  var(--space-lg);
     }
 
-    .section-grid {
+    .section-grid,
+    .highlights-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: var(--space-lg);
     }
 
-    .section-image {
+    .section-card,
+    .highlight-card {
+        background-color: var(--color-background);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-md);
+        padding: var(--space-md);
+        box-shadow: var(--shadow-sm);
+    }
+
+    .section-image,
+    .highlight-image {
         width: 100%;
         height: 220px;
         object-fit: cover;
         border-radius: var(--radius-sm);
+        margin-bottom: var(--space-sm);
+    }
+
+    .section-card h3,
+    .highlight-card h3 {
         margin-bottom: var(--space-sm);
     }
 
@@ -148,11 +195,13 @@
     }
     
     @media (max-width: 1024px) {
-        .section-grid {
+        .section-grid,
+        .highlights-grid {
             grid-template-columns: 1fr;
         }
 
-        .section-image {
+        .section-image,
+        .highlight-image {
             height: 200px;
         }
     }
