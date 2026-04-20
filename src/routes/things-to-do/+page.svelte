@@ -24,6 +24,10 @@
     let selectedActivity = '';
     let savedActivities = [];
 
+    let editingId = null;
+    let editCategory = '';
+    let editActivity = '';
+
     function getActivitiesForCategory() {
         if(selectedCategory === 'Entertainment') {
             return entertainmentItems;
@@ -96,6 +100,76 @@
         }
 
         savedActivities = savedActivities;
+    }
+
+    function getAvailableActivitiesForEdit() {
+        let categoryActivities = [];
+
+        if (editCategory === 'Entertainment') {
+            categoryActivities = entertainmentItems;
+        }
+
+        if (editCategory === 'Popular Places') {
+            categoryActivities = popularPlacesItems;
+        }
+
+        if (editCategory === 'Shopping') {
+            categoryActivities = shoppingItems;
+        }
+
+        let availableActivities = [];
+
+        for (let i = 0; i < categoryActivities.length; i++) {
+            let alreadySaved = false;
+
+            for (let j = 0; j < savedActivities.length; j++) {
+                if (savedActivities[j].name === categoryActivities[i].name &&
+                    savedActivities[j].id !== editingId) {
+                    alreadySaved = true;
+                }
+            }
+
+            if (alreadySaved === false) {
+                availableActivities.push(categoryActivities[i]);
+            }
+        }
+
+        return availableActivities;
+    }
+
+    function startEdit(activity) {
+        editingId = activity.id;
+        editCategory = activity.category;
+        editActivity = activity.name;
+    }
+
+    function handleEditCategoryChange() {
+        editActivity = '';
+    }
+
+    function saveEdit(id) {
+        if(editCategory === '' || editActivity === '') {
+            return;
+        }
+
+        for (let i = 0; i < savedActivities.length; i++) {
+            if(savedActivities[i].id === id) {
+                savedActivities[i].category = editCategory;
+                savedActivities[i].name = editActivity;
+                break;
+            }
+        }
+
+        savedActivities = savedActivities;
+        editingId = null;
+        editCategory = '';
+        editActivity = '';
+    }
+
+    function cancelEdit() {
+        editingId = null;
+        editCategory = '';
+        editActivity = '';
     }
 </script>
 
@@ -206,7 +280,7 @@
                 </div>
             {/if}
 
-            <button class="primary-button" on:click={addActivity} aria-label="Add selected activity to saved list">Add to Saved List</button>
+            <button class="primary-button" on:click={addActivity} aria-label="Save selected activity to list">Save to List</button>
         </div>
 
         <p class="saved-list-label">Your Saved Activities</p>
@@ -217,13 +291,53 @@
             <div class="saved-list">
                 {#each savedActivities as activity}
                     <div class="saved-item">
-                        <div class="saved-text">
-                            <p class="saved-category">{activity.category}</p>
-                            <p class="saved-name">{activity.name}</p>
-                        </div>
+                        {#if editingId === activity.id}
+                            <div class="saved-text">
+                                <div class="field">
+                                    <label for="edit-category">Category</label>
+                                    <select id="edit-category" bind:value={editCategory} on:change={handleEditCategoryChange}
+                                    aria-label="Edit saved activity category">
+                                        <option value="">Select a category</option>
+                                        <option value="Entertainment">Entertainment</option>
+                                        <option value="Popular Places">Popular Places</option>
+                                        <option value="Shopping">Shopping</option>
+                                    </select>
+                                </div>
 
-                        <button class="secondary-button" on:click={() => deleteActivity(activity.id)}
-                        aria-label="Delete activity from saved activities">Delete</button>
+                                {#if editCategory !== ''}
+                                    <div class="field">
+                                        <label for="edit-activity">Activity</label>
+                                        <select id="edit-activity" bind:value={editActivity}
+                                        aria-label="Edit saved activity">
+                                            <option value="">Select an activity</option>
+                                            {#each getAvailableActivitiesForEdit() as item}
+                                                <option value={item.name}>{item.name}</option>
+                                            {/each}
+                                        </select>
+                                    </div>
+                                {/if}
+                            </div>
+
+                            <div class="saved-actions">
+                                <button class="primary-button" on:click={() => saveEdit(activity.id)}
+                                aria-label="Save changes to saved activity">Save</button>
+                                <button class="secondary-button" on:click={cancelEdit}
+                                aria-label="Cancel editing saved activity">Cancel</button>
+                            </div>
+                        {:else}
+                            <div class="saved-text">
+                                <p class="saved-category">{activity.category}</p>
+                                <p class="saved-name">{activity.name}</p>
+                            </div>
+
+                            <div class="saved-actions">
+                                <button class="primary-button" on:click={() => startEdit(activity)}
+                                aria-label="Edit saved activity">Edit</button>
+
+                                <button class="secondary-button" on:click={() => deleteActivity(activity.id)}
+                                aria-label="Delete activity from saved activities">Delete</button>
+                            </div>
+                        {/if}
                     </div>
                 {/each}
             </div>
@@ -377,6 +491,12 @@
         gap: var(--space-xs);
     }
 
+    .saved-actions {
+        display: flex;
+        gap: var(--space-sm);
+        flex-wrap: wrap;
+    }
+
     .saved-name {
         margin: 0;
     }
@@ -419,6 +539,10 @@
         .saved-item {
             flex-direction: column;
             align-items: flex-start;
+        }
+
+        .saved-actions {
+            width: 100%;
         }
     }
 </style>
