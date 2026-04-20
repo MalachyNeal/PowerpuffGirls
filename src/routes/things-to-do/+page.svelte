@@ -1,23 +1,23 @@
 <script>
     const entertainmentItems = [
-        { id: 1, name: 'IMC Cinema' },
-        { id: 2, name: 'The Dome Entertainment Centre' },
-        { id: 3, name: 'Graiguecullen Swimming Pool' },
-        { id: 4, name: 'The Foundry Nightclub' }
+        { id: 1, name: 'IMC Cinema', image: '/images/things-to-do/entertainment/imc-cinema.png' },
+        { id: 2, name: 'The Dome Entertainment Centre', image: '/images/things-to-do/entertainment/dome.png' },
+        { id: 3, name: 'Graiguecullen Swimming Pool', image: '/images/things-to-do/entertainment/pool.png' },
+        { id: 4, name: 'The Foundry Nightclub', image: '/images/things-to-do/entertainment/foundry.png'}
     ];
 
     const popularPlacesItems = [
-        { id: 5, name: 'Brownshill Portal Dolmen' },
-        { id: 6, name: 'Carlow County Museum' },
-        { id: 7, name: 'Carlow Castle' },
-        { id: 8, name: "Duckett's Grove" }
+        { id: 5, name: 'Brownshill Portal Dolmen', image: '/images/things-to-do/popular-places/dolmen.png' },
+        { id: 6, name: 'Carlow County Museum', image: '/images/things-to-do/popular-places/museum.png' },
+        { id: 7, name: 'Carlow Castle', image: '/images/things-to-do/popular-places/castle.png' },
+        { id: 8, name: "Duckett's Grove", image: '/images/things-to-do/popular-places/ducketts-grove.png' }
     ];
 
     const shoppingItems = [
-        { id: 9, name: 'Carlow Shopping Centre' },
-        { id: 10, name: 'Fairgreen Shopping Centre' },
-        { id: 11, name: 'Penneys' },
-        { id: 12, name: 'Haddens Centre' }
+        { id: 9, name: 'Carlow Shopping Centre', image: '/images/things-to-do/shopping/carlow-sc.png' },
+        { id: 10, name: 'Fairgreen Shopping Centre', image: '/images/things-to-do/shopping/fairgreen-sc.png' },
+        { id: 11, name: 'Penneys', image: '/images/things-to-do/shopping/penneys.png' },
+        { id: 12, name: 'Haddens Centre', image: '/images/things-to-do/shopping/haddens-centre.png' }
     ];
 
     let selectedCategory = '';
@@ -188,7 +188,7 @@
         <div class="card-grid desktop-cards">
             {#each entertainmentItems.slice(0, 3) as item}
                 <div class="activity-card">
-                    <div class="image-placeholder"></div>
+                    <img src={item.image} alt={item.name} class="activity-image" />
                     <p class="activity-name">{item.name}</p>
                     <button class="go-button" aria-label="Go to activity page">GO</button>
                 </div>
@@ -197,13 +197,13 @@
 
         <div class="mobile-card">
             <div class="activity-card">
-                <div class="image-placeholder"></div>
+                <img src={entertainmentItems[0].image} alt={entertainmentItems[0].name} class="activity-image" />
                 <p class="activity-name">{entertainmentItems[0].name}</p>
                 <button class="go-button" aria-label="Go to activity page">GO</button>
             </div>
         </div>
 
-        <button class="view-all-button" aria-label="View all entertainment activities">View All</button>
+        <button class="view-all-button" aria-label="View all entertainment activities">View All →</button>
     </section>
 
     <section class="category-section">
@@ -212,7 +212,7 @@
         <div class="card-grid desktop-cards">
             {#each popularPlacesItems.slice(0, 3) as item}
                 <div class="activity-card">
-                    <div class="image-placeholder"></div>
+                    <img src={item.image} alt={item.name} class="activity-image" />
                     <p class="activity-name">{item.name}</p>
                     <button class="go-button" aria-label="Go to activity page">GO</button>
                 </div>
@@ -221,13 +221,13 @@
 
         <div class="mobile-card">
             <div class="activity-card">
-                <div class="image-placeholder"></div>
+                <img src={popularPlacesItems[0].image} alt={popularPlacesItems[0].name} class="activity-image" />
                 <p class="activity-name">{popularPlacesItems[0].name}</p>
                 <button class="go-button" aria-label="Go to activity page">GO</button>
             </div>
         </div>
 
-        <button class="view-all-button" aria-label="View all popular places">View All</button>
+        <button class="view-all-button" aria-label="View all popular places">View All →</button>
     </section>
 
     <section class="category-section">
@@ -236,7 +236,7 @@
         <div class="card-grid desktop-cards">
             {#each shoppingItems.slice(0, 3) as item}
                 <div class="activity-card">
-                    <div class="image-placeholder"></div>
+                    <img src={item.image} alt={item.name} class="activity-image" />
                     <p class="activity-name">{item.name}</p>
                     <button class="go-button" aria-label="Go to activity page">GO</button>
                 </div>
@@ -245,13 +245,13 @@
 
         <div class="mobile-card">
             <div class="activity-card">
-                <div class="image-placeholder"></div>
+                <img src={shoppingItems[0].image} alt={shoppingItems[0].name} class="activity-image" />
                 <p class="activity-name">{shoppingItems[0].name}</p>
                 <button class="go-button" aria-label="Go to activity page">GO</button>
             </div>
         </div>
 
-        <button class="view-all-button" aria-label="View all shopping activities">View All</button>
+        <button class="view-all-button" aria-label="View all shopping activities">View All →</button>
     </section>
 
     <section class="saved-section">
@@ -405,11 +405,11 @@
         align-items: center;
     }
 
-    .image-placeholder {
+    .activity-image {
         width: 300px;
         max-width: 100%;
         height: 220px;
-        background-color: var(--color-accent);
+        object-fit: cover;
         border: 1px solid var(--color-border);
         margin-bottom: var(--space-sm);
     }

@@ -1,5 +1,5 @@
 <footer class="footer">
-    <p>Tourism</p>
+    <p>© 2026 Carlow Tourism</p>
 </footer>
 
 
