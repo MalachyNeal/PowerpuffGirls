@@ -71,11 +71,7 @@
     .nav-item:nth-child(2) { animation-delay: 0.4s; }
     .nav-item:nth-child(3) { animation-delay: 0.6s; }
     .nav-item:nth-child(4) { animation-delay: 0.8s; }
-<<<<<<< HEAD
-    .nav-item:nth-child(5) {animation-delay: 1s; }
-=======
     .nav-item:nth-child(5) { animation-delay: 1s; }
->>>>>>> d567ee047989d1b08826803df68b532c61bec19f
 
     .nav a {
         position: relative;
