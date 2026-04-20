@@ -81,6 +81,8 @@
                 </div>
             {/each}
         </div>
+
+        <a class="highlights-button" href="/things-to-do/">GO</a>
      </section>
 
      <!-- Plan Visit Section -->
@@ -104,6 +106,10 @@
     /* Hero Section */
     .hero {
         text-align: center;
+        min-height: 85vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         padding: var(--space-xl) var(--space-md);
         border-radius: var(--radius-md);
         background-image: url('/images/backgrounds/carlow-hero.png');
@@ -147,10 +153,10 @@
     .explore-section,
     .highlights-section,
     .visit-section {
-        padding: 0 var(--space-md);
+        padding: var(--space-xl) var(--space-md);
         text-align: center;
     }
-
+    
     .explore-section h2,
     .highlights-section h2,
     .visit-section h2 {
@@ -201,10 +207,23 @@
         font-weight: 600;
     }
 
+    .highlights-button {
+        display: inline-block;
+        width: 150px;
+        margin-top: var(--space-lg);
+        background-color: var(--color-primary);
+        color: var(--text-contrast);
+        padding: var(--space-sm) var(--space-lg);
+        border-radius: var(--radius-sm);
+        font-weight: 600;
+    }
+
     .section-button:hover,
     .section-button:focus,
     .visit-button:hover,
-    .visit-button:focus {
+    .visit-button:focus,
+    .highlights-button:hover,
+    .highlights-button:focus {
         background-color: var(--color-secondary);
     }
 
