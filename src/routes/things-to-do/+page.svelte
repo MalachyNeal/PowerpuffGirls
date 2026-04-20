@@ -40,24 +40,33 @@
         return [];
     }
 
+    function getAvailableActivities() {
+        let categoryActivities = getActivitiesForCategory();
+        let availableActivities = [];
+
+        for (let i = 0; i < categoryActivities.length; i++) {
+            let alreadySaved = false;
+
+            for (let j = 0; j < savedActivities.length; j++) {
+                if(savedActivities[j].name === categoryActivities[i].name) {
+                    alreadySaved = true;
+                }
+            }
+
+            if (alreadySaved === false) {
+                availableActivities.push(categoryActivities[i]);
+            }
+        }
+
+        return availableActivities;
+    }
+
     function handleCategoryChange() {
         selectedActivity = '';
     }
 
     function addActivity() {
         if (selectedCategory === '' || selectedActivity === '') {
-            return;
-        }
-
-        let activityAlreadySaved = false;
-
-        for (let i = 0; i < savedActivities.length; i++) {
-            if (savedActivities[i].name === selectedActivity) {
-                activityAlreadySaved = true;
-            }
-        }
-
-        if(activityAlreadySaved === true) {
             return;
         }
 
@@ -90,7 +99,7 @@
                 <div class="activity-card">
                     <div class="image-placeholder"></div>
                     <p class="activity-name">{item.name}</p>
-                    <button class="go-button" aria-label={'Go to ${item.name}'}>GO</button>
+                    <button class="go-button" aria-label="Go to activity page">GO</button>
                 </div>
             {/each}
         </div>
@@ -99,11 +108,11 @@
             <div class="activity-card">
                 <div class="image-placeholder"></div>
                 <p class="activity-name">{entertainmentItems[0].name}</p>
-                <button class="go-button" aria-label={'Go to ${entertainmentItems[0].name}'}>GO</button>
+                <button class="go-button" aria-label="Go to activity page">GO</button>
             </div>
         </div>
 
-        <button class="view-all-button">View All</button>
+        <button class="view-all-button" aria-label="View all entertainment activities">View All</button>
     </section>
 
     <section class="category-section">
@@ -114,7 +123,7 @@
                 <div class="activity-card">
                     <div class="image-placeholder"></div>
                     <p class="activity-name">{item.name}</p>
-                    <button class="go-button" aria-label={'Go to ${item.name}'}>GO</button>
+                    <button class="go-button" aria-label="Go to activity page">GO</button>
                 </div>
             {/each}
         </div>
@@ -123,11 +132,11 @@
             <div class="activity-card">
                 <div class="image-placeholder"></div>
                 <p class="activity-name">{popularPlacesItems[0].name}</p>
-                <button class="go-button" aria-label={'Go to ${popularPlacesItems[0].name}'}>GO</button>
+                <button class="go-button" aria-label="Go to activity page">GO</button>
             </div>
         </div>
 
-        <button class="view-all-button">View All</button>
+        <button class="view-all-button" aria-label="View all popular places">View All</button>
     </section>
 
     <section class="category-section">
@@ -138,7 +147,7 @@
                 <div class="activity-card">
                     <div class="image-placeholder"></div>
                     <p class="activity-name">{item.name}</p>
-                    <button class="go-button" aria-label={'Go to ${item.name}'}>GO</button>
+                    <button class="go-button" aria-label="Go to activity page">GO</button>
                 </div>
             {/each}
         </div>
@@ -147,15 +156,15 @@
             <div class="activity-card">
                 <div class="image-placeholder"></div>
                 <p class="activity-name">{shoppingItems[0].name}</p>
-                <button class="go-button" aria-label={'Go to ${shoppingItems[0].name}'}>GO</button>
+                <button class="go-button" aria-label="Go to activity page">GO</button>
             </div>
         </div>
 
-        <button class="view-all-button">View All</button>
+        <button class="view-all-button" aria-label="View all shopping activities">View All</button>
     </section>
 
     <section class="saved-section">
-        <h2>Saved Activities</h2>
+        <h2>Save an Activity</h2>
 
         <div class="saved-form">
             <div class="field">
@@ -173,15 +182,17 @@
                     <label for="activity-select">Activity</label>
                     <select id="activity-select" bind:value={selectedActivity}>
                         <option value="">Select an activity</option>
-                        {#each getActivitiesForCategory() as activity}
+                        {#each getAvailableActivities() as activity}
                             <option value={activity.name}>{activity.name}</option>
                         {/each}
                     </select>
                 </div>
             {/if}
 
-            <button class="primary-button" on:click={addActivity}>Add to Saved List</button>
+            <button class="primary-button" on:click={addActivity} aria-label="Add selected activity to saved list">Add to Saved List</button>
         </div>
+
+        <p class="saved-list-label">Your Saved Activities</p>
 
         {#if savedActivities.length === 0}
             <p class="empty-message">No saved activities yet.</p>
@@ -313,6 +324,12 @@
         gap: var(--space-xs);
     }
 
+    .saved-list-label {
+        text-align: center;
+        font-weight: 600;
+        margin-bottom: var(--space-md);
+    }
+
     .saved-list {
         display: flex;
         flex-direction: column;
@@ -326,6 +343,10 @@
         border: 1px solid var(--color-border);
         border-radius: var(--radius-md);
         padding: var(--space-md);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: var(--space-md);
     }
 
     .saved-name {
@@ -333,7 +354,7 @@
     }
 
     .saved-category {
-        margin: 0 0 var(--space-xs);
+        margin: 0;
         font-weight: 600;
         color: var(--color-secondary);
     }
@@ -365,6 +386,11 @@
         .activity-card {
             width: 100%;
             align-items: center;
+        }
+
+        .saved-item {
+            flex-direction: column;
+            align-items: flex-start;
         }
     }
 </style>
