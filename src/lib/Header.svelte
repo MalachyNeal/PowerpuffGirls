@@ -5,10 +5,9 @@
 
 
 <header class="header">
-    <div class="logo-area">
-        <img src={asset("/logo.png")} alt="Starter Kit Logo" />
-        <h1>Starter Kit</h1>
-    </div>
+    <a href="/" class="logo-area">
+        <img src={asset("/logo.png")} alt="Site Logo" />
+    </a>
     <Navigation />
 </header>
 
@@ -19,9 +18,9 @@
         justify-content: space-between;
         align-items: center;
         padding: 0 var(--space-lg);
-        background-color: var(--color-surface);
+        background-color: var(--color-secondary);
         box-shadow: var(--shadow-md);
-        border-bottom: var(--border-default);
+        border-bottom: 1px solid var(--color-border);
         position: relative;
         z-index: 100;
     }
@@ -36,20 +35,8 @@
     .logo-area img {
         width: 96px;
         height: auto;
-        border-radius: var(--radius-sm);
-        box-shadow: var(--shadow-sm);
-    }
-
-    .logo-area h1 {
-        margin: 0;
-        font-size: var(--font-xxl);
-        font-weight: 700;
-        background: var(--gradient-brand);
-        background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        line-height: 1;
-        animation: fadeInTitle 0.6s ease forwards;
+        border-radius: 0;
+        box-shadow: none;
     }
 
     @keyframes fadeInTitle {
@@ -63,20 +50,22 @@
         }
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 1024px) {
         .header {
-            flex-direction: column;
-            align-items: flex-start;
-            padding: var(--space-sm);
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-sm) var(--space-md);
         }
 
         .logo-area {
-            justify-content: center;
-            width: 100%;
+            justify-content: flex-start;
+            width: auto;
         }
 
-        .logo-area h1 {
-            font-size: var(--font-lg);
+        .logo-area img {
+            width: 72px;
+            height: auto;
         }
     }
 </style>
