@@ -1,18 +1,23 @@
 <footer class="footer">
-    <p>&copy; 2025 Starter Kit. Inspired by mindful design and resilient development.</p>
+    <p>© 2026 Carlow Tourism</p>
 </footer>
 
 
 <style>
+
+    p {
+        color: var(--text-contrast);
+    }
+
     .footer {
         width: 100%;
         padding: var(--space-md);
         text-align: center;
         font-family: var(--font-body);
         font-size: var(--font-sm);
-        color: var(--text-tertiary);
-        background-color: var(--color-surface);
-        border-top: var(--border-default);
+        color: var(--text-contrast);
+        background-color: var(--color-secondary);
+        border-top: 1px solid var(--color-border);
         box-shadow: var(--shadow-sm);
         position: relative;
         z-index: 10;
@@ -26,7 +31,7 @@
         left: 0;
         height: 3px;
         width: 100%;
-        background: var(--gradient-brand);
+        background: var(--color-primary);
         animation: gradientScroll 6s linear infinite;
     }
 

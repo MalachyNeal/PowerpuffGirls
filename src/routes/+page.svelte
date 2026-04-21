@@ -1,87 +1,99 @@
-<script>
-    import { fade } from 'svelte/transition';
-    import { resolve } from '$app/paths';
-	import { goto } from '$app/navigation';
-    import { CatalogueCard, Modal } from '$lib/components';
-    import { catalogue } from '$lib/stores/catalogueStore.js';
-    import { currentQuote, setRandomQuote } from '$lib/stores/quoteStore.js';
-    
-    let showQuoteModal = false;
-
-    /**
-     * Select a few featured items — e.g., first 4 items
-	 * @type {any[]}
-	 */
-    let featuredItems = [];
-
-    $: $catalogue && (featuredItems = $catalogue.slice(0, 4));
-
-    function openQuoteModal() {
-        setRandomQuote();
-        showQuoteModal = true;
-    }
-</script>
-
-
 <svelte:head>
-    <title>Starter Kit</title>
+    <title>Carlow Tourism</title>
 </svelte:head>
 
+<script>
+    import { resolve, asset } from '$app/paths';
+   const siteSections = [
+    {
+        title: 'Things to Do',
+        text: 'Browse activities, attractions, shopping places, and popular places across Carlow.',
+        link: resolve('/things-to-do/'),
+        image: asset('/images/homepage/things-to-do.png')
+    },
+    {
+        title: 'Guides',
+        text: 'Read useful, local guides to help plan your visit and discover more of Carlow.',
+        link: resolve('/guides/'),
+        image: asset('/images/homepage/guides.png')
+    },
+    {
+        title: 'User Reviews',
+        text: 'See what visitors think and explore experiences shared by other people.',
+        link: resolve('/user-reviews/'),
+        image: asset('/images/homepage/user-reviews.png')
+    }
+   ];
+
+   const featuredHighlights = [
+    {
+        title: 'Brownshill Portal Dolmen',
+        image: asset('/images/things-to-do/popular-places/dolmen.png')
+    },
+    {
+        title: 'The Dome Entertainment Centre',
+        image: asset('/images/things-to-do/entertainment/dome.png')
+    },
+    {
+        title: 'Carlow Castle',
+        image: asset('/images/things-to-do/popular-places/castle.png')
+    }
+   ];
+</script>
 
 <!-- Page Container -->
 <div class="home-container">
     <!-- Hero Section -->
     <section class="hero">
-        <h1>Live Mindfully. Learn Purposefully.</h1>
-        <p class="subheading">
-            Inspired by the 7 Virtues of Bushidō and the 11 Principles of the Shinobi.
-        </p>
-        <button class="inspire-button" on:click={openQuoteModal}>
-            Find Inspiration
-        </button>
+        <div class="hero-content">
+            <h1>Carlow</h1>
+            <p class="hero-text">
+                Discover activities, local guides, and visitor reviews to help you plan your trip around Carlow.
+            </p>
+            <a class="hero-button" href="#explore">Start Exploring</a>
+        </div>
     </section>
 
-    <!-- Featured Catalogue Section -->
-    <section class="featured">
-        <h2>Featured Practices</h2>
-        <div class="card-grid">
-            {#each featuredItems as item, index}
-                <button
-					type="button"
-					class="card-button"
-					on:click={() => goto(resolve('/catalogue/[title]', { title: item.title }))}
-					aria-label={`View details for ${item.title}`}
-				>
-                    <CatalogueCard
-                        title={item.title}
-                        description={item.description}
-                        image={item.image}
-                        category={item.category}
-                        tags={item.tags}
-                        animationDelay={index * 80}
-                    />
-                </button>
+    <!-- Explore Section -->
+    <section class="explore-section" id="explore">
+        <h2>Explore the Website</h2>
+
+        <div class="section-grid">
+            {#each siteSections as item}
+                <div class="section-card">
+                    <img src={item.image} alt={item.title} class="section-image" />
+                    <h3>{item.title}</h3>
+                    <p>{item.text}</p>
+                    <a class="section-button" href={item.link}>Explore</a>
+                </div>
             {/each}
         </div>
-        <a class="browse-link" href="{resolve('/catalogue')}">Browse Full Catalogue →</a>
     </section>
 
-    <!-- About Teaser Section -->
-    <section class="about-teaser">
-        <h2>Why This Matters</h2>
-        <p>
-            This project blends timeless wisdom with modern habits — from Stoic journaling to Shinobi adaptability.
-            Whether you seek health, discipline, or mindfulness, our tools are here to guide you.
+    <!-- Highlights Section -->
+     <section class="highlights-section">
+        <h2>Featured Highlights</h2>
+
+        <div class="highlights-grid">
+            {#each featuredHighlights as item}
+                <div class="highlight-card">
+                    <img src={item.image} alt={item.title} class="highlight-image" />
+                    <h3>{item.title}</h3>
+                </div>
+            {/each}
+        </div>
+
+        <a class="highlights-button" href={resolve('/things-to-do/')}>GO</a>
+     </section>
+
+     <!-- Plan Visit Section -->
+      <section class="visit-section">
+        <h2>Plan Your Visit</h2>
+        <p> Looking for more information before your trip? 
+            See our contact page and start planning your visit to Carlow.
         </p>
-        <a href="{resolve('/about')}" class="learn-more">Learn more →</a>
-    </section>
-
-    <!-- Quote Modal -->
-    <Modal
-        bind:isOpen={showQuoteModal}
-        {...$currentQuote}
-        onClose={() => (showQuoteModal = false)}
-    />
+        <a class="visit-button" href={resolve('/contact/')}>Contact Us</a>
+      </section>
 </div>
 
 
@@ -95,126 +107,145 @@
     /* Hero Section */
     .hero {
         text-align: center;
+        min-height: 85vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         padding: var(--space-xl) var(--space-md);
         border-radius: var(--radius-md);
-        box-shadow: var(--shadow-sm);
-        background-image: url('/images/backgrounds/zen-hero.png');
+        background-image: url('/images/backgrounds/carlow-hero.png');
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
         background-blend-mode: overlay;
         background-color: rgba(255, 255, 255, 0.75);
+    }
+
+    .hero-content {
+        max-width: 800px;
+        margin: 0 auto;
     }
 
     .hero h1 {
         font-size: var(--font-xxl);
-        font-family: var(--font-heading);
         margin-bottom: var(--space-sm);
     }
 
-    .subheading {
+    .hero-text {
         font-size: var(--font-lg);
-        font-family: var(--font-body);
-        color: var(--text-secondary);
         margin-bottom: var(--space-md);
     }
 
-    .inspire-button {
-        padding: var(--space-sm) var(--space-lg);
-        background-color: var(--color-accent);
+    .hero-button {
+        display: inline-block;
+        background-color: var(--color-primary);
         color: var(--text-contrast);
-        font-size: var(--font-base);
-        font-weight: 600;
-        border: none;
+        padding: var(--space-sm) var(--space-lg);
         border-radius: var(--radius-sm);
-        cursor: pointer;
-        transition: background-color var(--transition-fast);
+        font-weight: 600;
     }
 
-    .inspire-button:hover,
-    .inspire-button:focus {
-        background-color: var(--color-highlight);
+    .hero-button:hover,
+    .hero-button:focus {
+        background-color: var(--color-secondary);
     }
 
-    /* Featured Section */
-    .featured {
-        padding: 0 var(--space-md);
-        background-image: url('/images/backgrounds/rice-texture.png');
-        background-size: 200px;
-        background-repeat: repeat;
-        background-color: rgba(255, 255, 255, 0.85);
-    }
-
-    .featured h2 {
+    /* Explore, Highlights, and Plan Visit Section */
+    .explore-section,
+    .highlights-section,
+    .visit-section {
+        padding: var(--space-xl) var(--space-md);
         text-align: center;
-        font-family: var(--font-heading);
-        font-size: var(--font-xl);
-        margin-bottom: var(--space-lg);
+    }
+    
+    .explore-section h2,
+    .highlights-section h2,
+    .visit-section h2 {
+        margin-bottom:  var(--space-lg);
     }
 
-	/* Ensure button styling doesn’t interfere */
-	.card-button {
-		all: unset; /* Remove default button styles */
-		cursor: pointer;
-		display: block;
-		text-align: inherit;
-	}
-
-	.card-button:focus-visible {
-		outline: 2px solid var(--color-accent);
-		outline-offset: 4px;
-	}
-
-    .card-grid {
+    .section-grid,
+    .highlights-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        grid-template-columns: repeat(3, 1fr);
         gap: var(--space-lg);
-        margin-bottom: var(--space-md);
     }
 
-    .browse-link {
-        display: block;
-        text-align: center;
-        margin-top: var(--space-md);
-        font-weight: 500;
-        text-decoration: none;
-        color: var(--color-accent);
-    }
-
-    /* About Teaser */
-    .about-teaser {
-        text-align: center;
-        padding: var(--space-lg) var(--space-md);
+    .section-card,
+    .highlight-card {
         background-color: var(--color-background);
-        border-top: var(--border-default);
-        background: linear-gradient(to top, var(--color-surface), transparent);
-        background-image: url('/images/backgrounds/scroll-teaser.png');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-blend-mode: overlay;
-        background-color: rgba(255, 255, 255, 0.75);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-md);
+        padding: var(--space-md);
+        box-shadow: var(--shadow-sm);
     }
 
-    .about-teaser h2 {
-        font-family: var(--font-heading);
+    .section-image,
+    .highlight-image {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        border-radius: var(--radius-sm);
         margin-bottom: var(--space-sm);
     }
 
-    .about-teaser p {
-        font-size: var(--font-base);
-        color: var(--text-secondary);
-        max-width: 60ch;
-        margin: 0 auto var(--space-sm) auto;
+    .section-card h3,
+    .highlight-card h3 {
+        margin-bottom: var(--space-sm);
     }
 
-    .learn-more {
-        font-size: var(--font-sm);
-        color: var(--color-accent);
-        text-decoration: none;
+    .section-card p {
+        margin-bottom: var(--space-md);
     }
 
-    .learn-more:hover {
-        text-decoration: underline;
+    .section-button,
+    .visit-button {
+        display: inline-block;
+        background-color: var(--color-primary);
+        color: var(--text-contrast);
+        padding: var(--space-sm) var(--space-md);
+        border-radius: var(--radius-sm);
+        font-weight: 600;
+    }
+
+    .highlights-button {
+        display: inline-block;
+        width: 150px;
+        margin-top: var(--space-lg);
+        background-color: var(--color-primary);
+        color: var(--text-contrast);
+        padding: var(--space-sm) var(--space-lg);
+        border-radius: var(--radius-sm);
+        font-weight: 600;
+    }
+
+    .section-button:hover,
+    .section-button:focus,
+    .visit-button:hover,
+    .visit-button:focus,
+    .highlights-button:hover,
+    .highlights-button:focus {
+        background-color: var(--color-secondary);
+    }
+
+    .visit-section {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .visit-section p {
+        margin-bottom: var(--space-md);
+    }
+    
+    @media (max-width: 1024px) {
+        .section-grid,
+        .highlights-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .section-image,
+        .highlight-image {
+            height: 200px;
+        }
     }
 </style>
