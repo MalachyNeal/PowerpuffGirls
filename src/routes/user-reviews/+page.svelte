@@ -10,7 +10,11 @@
     <section class="review-section">
         <h2>Shop Reviews</h2>
 
-        <div>
+        <div class="mobile">
+
+        </div>
+
+        <div class="desktop">
 
         </div>
     </section>
@@ -18,7 +22,11 @@
     <section class="review-section">
         <h2>Food Reviews</h2>
 
-        <div>
+        <div class = "mobile">
+
+        </div>
+
+        <div class = "desktop">
 
         </div>
     </section>
@@ -26,11 +34,22 @@
     <section class="review-section">
         <h2>Accomadation Reviews</h2>
 
-        <div>
+        <div class ="mobile">
+
+        </div>
+
+        <div class ="desktop">
 
         </div>
     </section>
 
+    <section class="write-section">
+        <h2>Write a Review</h2>
+
+        <div>
+
+        </div>
+    </section>
 </div>
 
 
@@ -57,5 +76,19 @@
         text-align: center;
         margin-bottom: var(--space-xl);
         padding-top: var(--space-xs);
+    }
+
+    .write-section {
+        text-align: center;
+        margin-bottom: var(--space-xl);
+        padding-top: var(--space-xs);
+    }
+
+    .mobile {
+        display: none
+    }
+
+    .desktop {
+        display: grid
     }
 </style>
