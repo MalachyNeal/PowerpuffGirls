@@ -74,6 +74,7 @@ let guides = [
 
   .card:hover {
     transform: scale(1.03);
+    transition: 0.2s;
   }
 
   .card h3 {
@@ -85,8 +86,8 @@ let guides = [
     background: #2e7d32;
     color:white;
     border:none;
-    padding: 10px 16px;
-    border-radius: 8px;
+    padding: 8px 14px;
+    border-radius: 6px;
     text-decoration: none;
     cursor: pointer;
     margin-top: 10px;
@@ -95,7 +96,7 @@ let guides = [
     background: #1f5c24;
   }
   .image-box {
-    height:140px;
+    height:160px;
     overflow: hidden;
     border-radius: 8px;
     margin-bottom: 12px;
