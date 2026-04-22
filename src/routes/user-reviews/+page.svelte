@@ -1,3 +1,24 @@
+<script>
+
+    const ShopReviews = [
+        {id: 1, name: "John Doe", text: "Wow, this is so very amazing, just fantastic looking at these shops."},
+        {id: 2, name: "Joe Don", text: "Wow, I hate this, I utterly hate this, and you should hate this too"},
+        {id: 3, name: "Jill Hillbert", text: "My wife left me"},
+    ];
+
+    const FoodReviews = [
+        {id: 1, name: "John Doe", text: "Wow, this is so very amazing, just fantastic looking at these shops."},
+        {id: 2, name: "Joe Don", text: "Wow, I hate this, I utterly hate this, and you should hate this too"},
+        {id: 3, name: "Jill Hillbert", text: "My wife left me"},
+    ];
+
+    const AccomadationReviews = [
+        {id: 1, name: "John Doe", text: "Wow, this is so very amazing, just fantastic looking at these shops."},
+        {id: 2, name: "Joe Don", text: "Wow, I hate this, I utterly hate this, and you should hate this too"},
+        {id: 3, name: "Jill Hillbert", text: "My wife left me"},
+    ];
+</script>
+
 <svelte:head>
     <title>User Reviews</title>
 </svelte:head>
@@ -11,11 +32,18 @@
         <h2>Shop Reviews</h2>
 
         <div class="mobile">
-
+            <div class="grid">
+                
+            </div>
         </div>
 
         <div class="desktop">
-
+            {#each ShopReviews.slice(0,3) as item}
+                <div class="grid">
+                    <p class="reviewer">{item.name}</p>
+                    <p class="review">{item.text}</p>
+                </div>
+            {/each}
         </div>
     </section>
 
@@ -27,7 +55,12 @@
         </div>
 
         <div class = "desktop">
-
+            {#each FoodReviews.slice(0,3) as item}
+                <div class="grid">
+                    <p class="reviewer">{item.name}</p>
+                    <p class="review">{item.text}</p>
+                </div>
+            {/each}
         </div>
     </section>
 
@@ -39,7 +72,12 @@
         </div>
 
         <div class ="desktop">
-
+            {#each AccomadationReviews.slice(0,3) as item}
+                <div class="grid">
+                    <p class="reviewer">{item.name}</p>
+                    <p class="review">{item.text}</p>
+                </div>
+            {/each}
         </div>
     </section>
 
@@ -84,11 +122,33 @@
         padding-top: var(--space-xs);
     }
 
+    .grid {
+        border: 1px solid;
+    }
+
     .mobile {
-        display: none
+        display: none;
     }
 
     .desktop {
-        display: grid
+        display: grid;
+    }
+
+    .reviewer {
+        text-align: left;
+    }
+
+    .review {
+        text-align: left;
+    }
+
+    @media (max-width: 1024){
+        .mobile {
+            display: none;
+        }
+
+        .desktop {
+            display: grid;
+        }
     }
 </style>
