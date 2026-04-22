@@ -7,13 +7,13 @@
     ];
 
     const FoodReviews = [
-        {id: 1, name: "John Doe", text: "Wow, this is so very amazing, just fantastic looking at these shops."},
+        {id: 1, name: "John Doe", text: "Wow, this is so very amazing, just fantastic looking at these foods."},
         {id: 2, name: "Joe Don", text: "Wow, I hate this, I utterly hate this, and you should hate this too"},
         {id: 3, name: "Jill Hillbert", text: "My wife left me"},
     ];
 
     const AccomadationReviews = [
-        {id: 1, name: "John Doe", text: "Wow, this is so very amazing, just fantastic looking at these shops."},
+        {id: 1, name: "John Doe", text: "Wow, this is so very amazing, just fantastic looking at these accomadations."},
         {id: 2, name: "Joe Don", text: "Wow, I hate this, I utterly hate this, and you should hate this too"},
         {id: 3, name: "Jill Hillbert", text: "My wife left me"},
     ];
@@ -38,7 +38,7 @@
         </div>
 
         <div class="desktop">
-            {#each ShopReviews.slice(0,3) as item}
+            {#each ShopReviews.slice(0, 3) as item}
                 <div class="grid">
                     <p class="reviewer">{item.name}</p>
                     <p class="review">{item.text}</p>
@@ -124,6 +124,7 @@
 
     .grid {
         border: 1px solid;
+        padding: var(--space-sm) var(--space-lg) var(--space-xl);
     }
 
     .mobile {
@@ -132,6 +133,9 @@
 
     .desktop {
         display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-xl);
+        align-items: start;
     }
 
     .reviewer {
