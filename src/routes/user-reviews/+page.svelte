@@ -32,9 +32,12 @@
         <h2>Shop Reviews</h2>
 
         <div class="mobile">
-            <div class="grid">
-                
-            </div>
+            {#each ShopReviews.slice(0, 3) as item}
+                <div class="grid">
+                    <p class="reviewer">{item.name}</p>
+                    <p class="review">{item.text}</p>
+                </div>
+            {/each}
         </div>
 
         <div class="desktop">
@@ -51,7 +54,12 @@
         <h2>Food Reviews</h2>
 
         <div class = "mobile">
-
+            {#each FoodReviews.slice(0,3) as item}
+                <div class="grid">
+                    <p class="reviewer">{item.name}</p>
+                    <p class="review">{item.text}</p>
+                </div>
+            {/each}
         </div>
 
         <div class = "desktop">
@@ -68,7 +76,12 @@
         <h2>Accomadation Reviews</h2>
 
         <div class ="mobile">
-
+            {#each AccomadationReviews.slice(0,3) as item}
+                <div class="grid">
+                    <p class="reviewer">{item.name}</p>
+                    <p class="review">{item.text}</p>
+                </div>
+            {/each}
         </div>
 
         <div class ="desktop">
@@ -146,13 +159,16 @@
         text-align: left;
     }
 
-    @media (max-width: 1024){
-        .mobile {
+    @media (max-width: 1024px) {
+        .desktop {
             display: none;
         }
-
-        .desktop {
+        
+        .mobile {
             display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: var(--space-xl);
+            align-items: start;
         }
     }
 </style>
