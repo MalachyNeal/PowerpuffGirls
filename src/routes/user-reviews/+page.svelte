@@ -17,6 +17,12 @@
         {id: 2, name: "Joe Don", text: "Wow, I hate this, I utterly hate this, and you should hate this too"},
         {id: 3, name: "Jill Hillbert", text: "My wife left me"},
     ];
+
+    let selectedReview = '';
+
+    function reviewChange() {
+        selectedReview = '';
+    }
 </script>
 
 <svelte:head>
@@ -98,7 +104,23 @@
         <h2>Write a Review</h2>
 
         <div>
+        <div class="field">
+                <label for="category-select">Review</label>
+                <select id="category-select" bind:value={selectedReview} on:change={reviewChange}>
+                    <option value="">Select what you wish to review</option>
+                    <option value="Shop">Shop</option>
+                    <option value="Food">Food</option>
+                    <option value="Accomadation">Accomadation</option>
+                </select>
+            </div>
 
+            {#if selectedReview !== ''}
+                <div class="field">
+                    <label for="activity-select">Activity</label>
+                </div>
+            {/if}
+
+            <textarea name="writtenreview" id="5"></textarea>
         </div>
     </section>
 </div>
