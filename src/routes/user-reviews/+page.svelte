@@ -105,7 +105,6 @@
 
         <div>
         <div class="field">
-                <label for="category-select">Review</label>
                 <select id="category-select" bind:value={selectedReview} on:change={reviewChange}>
                     <option value="">Select what you wish to review</option>
                     <option value="Shop">Shop</option>
