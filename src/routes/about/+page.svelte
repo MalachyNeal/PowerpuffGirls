@@ -1,5 +1,9 @@
 
     <script>
+    
+    import { base } from '$app/paths';
+
+    
 </script>
 
 <!-- TITLE -->
@@ -46,12 +50,12 @@
     visitors easily discover places and plan their visit to Carlow.
   </p>
 
-    <a href="/" class="btn">Back to Home</a>
+    <a href=" {base}/" class="btn">Back to Home</a>
   </div>
 
   <!-- RIGHT SIDE IMAGE -->
   <div class="about-image">
-    <img src="/images/about/Carlow.jpg" alt="Carlow town view landscape" />
+    <img src=" {base}/images/about/Carlow.jpg" alt="Carlow town view landscape" />
   </div>
 
 </div>
