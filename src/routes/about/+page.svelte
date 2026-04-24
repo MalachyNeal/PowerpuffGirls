@@ -51,7 +51,7 @@
 
   <!-- RIGHT SIDE IMAGE -->
   <div class="about-image">
-    <img src="/images/about/Carlow.jpg" alt="Travesl Image" />
+    <img src="/images/about/Carlow.jpg" alt="Carlow town view landscape" />
   </div>
 
 </div>
