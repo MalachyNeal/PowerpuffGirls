@@ -1,24 +1,25 @@
 
 <script>
+import { base } from '$app/paths';
 let guides = [
         {
             title: "Altamont Gardens",
             description: "Beautiful gardens with revers and walking paths.",
             link:"https://www.altamontgarden.com",
-            image:"/images/Guides_Page/altamon_garden.jpg"
+            image:`${base}/images/Guides_Page/altamon_garden.jpg`
         },
         {
             title: "Brownshill Dolmen",
             description: "One of the largest dolmens in Ireland.",
             link:"https://heritageireland.ie/unguided-sites/brownshill-portal-dolmen/",
-            image:"/images/Guides_Page/brownshill_dolmen.jpg"
+            image:`${base}/images/Guides_Page/brownshill_dolmen.jpg`
         
           },
         {
             title: "Carlow Castle",
             description: "A historic castle in Carlow town",
             link: "https://heritageireland.ie/unguided-sites/carlow-castle/",
-            image:"/images/Guides_Page/carlow_castle.jpg"
+            image:`${base}/images/Guides_Page/carlow_castle.jpg`
         },
         
     ];
@@ -93,7 +94,7 @@ let guides = [
     cursor: pointer;
     margin-top: 10px;
   }
-  button:hover {
+  .btn:hover {
     background: #1f5c24;
   }
   .image-box {
