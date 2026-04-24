@@ -10,31 +10,48 @@
 
   <!-- LEFT SIDE TEXT -->
   <div class="about-text">
-    <h2>Welcome 👋</h2>
+    <h2>Welcome to Carlow </h2>
     <p>
-      This travel website helps visitors explore Carlow and discover amazing places,
-      attractions, and activities.
+    Carlow is a beautiful town in the southeast of Ireland, known for its rich history,
+    scenic landscapes, and vibrant culture. It offers a perfect mix of heritage sites,
+    outdoor activities, and modern attractions.
     </p>
+    <p>
+    Whether you are visiting for a short trip or planning a longer stay, Carlow has
+    something for everyone — from historic castles to peaceful gardens and exciting
+    entertainment venues.
+  </p>
+
+  <h3>Top Attractions</h3>
+  <ul>
+    <li>Altamont Gardens – famous for its stunning natural beauty</li>
+    <li>Brownshill Dolmen – one of the largest dolmens in Ireland</li>
+    <li>Carlow Castle – a historic Norman castle in the town centre</li>
+    <li>The Dome – a popular entertainment centre</li>
+  </ul>
 
     <h3>What you can do:</h3>
     <ul>
-      <li>Browse Travel Guides</li>
-      <li>Discover Popular Places</li>
-      <li>Plan your itinerary</li>
-      <li>Explore entertainment & shopping</li>
+      <li>Explore cultural and historical landmarks</li>
+    <li>Enjoy shopping and dining experiences</li>
+    <li>Visit parks and nature trails</li>
+    <li>Plan your own travel itinerary</li>
     </ul>
 
-    <h3>About Me</h3>
-    <p>
-      This project was created as part of my course in Computing in Interactive Digital Art and Design.
-    </p>
+    
+    <h3>About This Project</h3>
+  <p>
+    This website was developed as part of a college project in Computing in Interactive
+    Digital Art and Design. The aim is to create a user-friendly travel guide that helps
+    visitors easily discover places and plan their visit to Carlow.
+  </p>
 
     <a href="/" class="btn">Back to Home</a>
   </div>
 
   <!-- RIGHT SIDE IMAGE -->
   <div class="about-image">
-    <img src="/images/about/Carlow.jfif" alt="Travel Image" />
+    <img src="/images/about/Carlow.jpg" alt="Travesl Image" />
   </div>
 
 </div>
@@ -45,19 +62,24 @@
   text-align: center;
   font-size: 32px;
   margin-bottom: 30px;
+  margin-top: 50px;
 }
 
 /* MAIN LAYOUT */
 .about-container {
   display: flex;
-  align-items: center;
+  align-items:center;
   justify-content: space-between;
-  gap: 40px;
+  gap: 50px;
+  margin: auto;
+  padding: 20px 40px;
+  padding-left: 40px;
 }
 
 /* LEFT TEXT */
 .about-text {
   flex: 1;
+  margin-top: 60px;
 }
 
 .about-text p {
@@ -72,6 +94,7 @@
 /* RIGHT IMAGE */
 .about-image {
   flex: 1;
+  margin-top: -30px;
 }
 
 .about-image img {
