@@ -24,6 +24,41 @@ let guides = [
             link: "https://heritageireland.ie/unguided-sites/carlow-castle/",
             image:`${base}/images/Guides_Page/carlow_castle.jpg`
         },
+
+        {
+            title: "Delta Sensory Gardens",
+            description: "Peaceful gardens with colourful flowers, water features, and relaxing walkways.",
+            link: "https://deltasensorygardens.com",
+            image: `${base}/images/Guides_Page/delta.jpg`
+        },
+
+        {
+          title: "Carlow County Museum",
+          description: "A museum showing Carlow’s history, culture, and local stories.",
+          link: "https://www.carlowmuseum.ie",
+          image: `${base}/images/Guides_Page/musium.jpg`
+        },
+
+        {
+          title: "VISUAL Carlow",
+          description: "A modern arts centre with exhibitions, theatre, and creative events.",
+          link: "https://visualcarlow.ie",
+          image: `${base}/images/Guides_Page/visual.jpg`
+        },
+
+        {
+          title: "Duckett’s Grove",
+          description: "A historic ruined mansion with gardens, architecture, and scenic views.",
+          link: "https://carlowtourism.com",
+          image: `${base}/images/Guides_Page/duckett.jpg`
+        },
+
+        {
+          title: "Oak Park Forest Park",
+          description: "A relaxing forest park with walking trails, nature, and picnic areas.",
+          link: "https://carlowtourism.com",
+          image: `${base}/images/Guides_Page/oak.jpg`
+        }
         
     ];
     //search
