@@ -1,6 +1,9 @@
 
 <script>
 import { base } from '$app/paths';
+import { onMount } from 'svelte';
+	import { parse } from 'svelte/compiler';
+
 
 let guides = [
         {
@@ -30,6 +33,13 @@ let guides = [
   /** @type {{title: string, description: string, link: string, image: string}[]} */
   let savedGuides = [];
   
+  onMount(() => {
+    const stored = localStorage.getItem('savedGuides');
+    if (stored){
+      savedGuides = JSON.parse(stored);
+    }
+  }
+  );
 
  
   $: filteredGuides = guides.filter((guide) =>
@@ -41,12 +51,14 @@ let guides = [
   function saveGuide(guide) {
     if (!savedGuides.find((item) => item.title === guide.title)) {
       savedGuides = [...savedGuides, guide];
+      localStorage.setItem('savedGuides',JSON.stringify(savedGuides));
     }
   }
 
   
   function removeGuide(/**@type {string}*/title) {
     savedGuides = savedGuides.filter((guide) => guide.title !== title);
+    localStorage.setItem('savedGuides',JSON.stringify(savedGuides));
   }
 </script>
 
