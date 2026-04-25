@@ -197,12 +197,24 @@ function undoRemove() {
     margin: 15px 0;
     border: 1px solid #ccc;
     border-radius: 8px;
+    margin: 20px auto;
   }
   .guides {
       display: grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      grid-template-columns:repeat(3,1fr);
       gap: 20px;
       margin-top: 20px;
+  }
+
+  @media(max-width:768px) {
+    .guides {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (min-width:769px) and (max-width:1024px) {
+    .guides {
+      grid-template-columns: repeat(2,1fr);
+    }
   }
 
   .card {
@@ -211,6 +223,9 @@ function undoRemove() {
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     transition: transform 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between ;
   }
 
   .card:hover {
@@ -223,7 +238,8 @@ function undoRemove() {
   }
 
   .btn {
-    display: inline-block;
+    display: block;
+    text-align: center;
     background: #2e7d32;
     color:white;
     border:none;
