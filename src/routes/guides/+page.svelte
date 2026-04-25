@@ -2,8 +2,7 @@
 <script>
 import { base } from '$app/paths';
 import { onMount } from 'svelte';
-	import { parse } from 'svelte/compiler';
-
+	
 
 let guides = [
         {
@@ -32,6 +31,11 @@ let guides = [
 
   /** @type {{title: string, description: string, link: string, image: string}[]} */
   let savedGuides = [];
+  let message ='';
+  /** @type {{title: string, description: string, link: string, image: string} | null} */
+  let lastRemoved =null;
+
+  
   
   onMount(() => {
     const stored = localStorage.getItem('savedGuides');
@@ -52,14 +56,31 @@ let guides = [
     if (!savedGuides.find((item) => item.title === guide.title)) {
       savedGuides = [...savedGuides, guide];
       localStorage.setItem('savedGuides',JSON.stringify(savedGuides));
+      message = `${guide.title} saved.`;
+    }
+    else{
+      message = `${guide.title} is already saved.`;
     }
   }
 
   
   function removeGuide(/**@type {string}*/title) {
+    // @ts-ignore
+    lastRemoved = savedGuides.find((guide) => guide.title === title);
     savedGuides = savedGuides.filter((guide) => guide.title !== title);
     localStorage.setItem('savedGuides',JSON.stringify(savedGuides));
+    message = `${title} removed.`
   }
+function undoRemove() {
+  // @ts-ignore
+  if (lastRemoved && ! savedGuides.find((guides) => guides.title === lastRemoved.title)) {
+    savedGuides = [ ...savedGuides,lastRemoved];
+    localStorage.setItem('savedGuides',JSON.stringify(savedGuides));
+    message = `${lastRemoved.title} restored.`;
+    lastRemoved = null;
+  }
+}
+  
 </script>
 
 <h1>
@@ -73,6 +94,15 @@ let guides = [
   placeholder="Search guides..."
   aria-label="Search travel guides"
 />
+{#if message}
+  <div class="message">
+    <span>{message}</span>
+
+    {#if lastRemoved}
+      <button on:click={undoRemove}>Undo</button>
+    {/if}
+  </div>
+{/if}
 
 <div class="guides">
 {#each filteredGuides as guide}
@@ -116,12 +146,14 @@ let guides = [
   h1 {
     font-size: 28px;
     margin-bottom: 10px;
+    text-align: center;
   }
 
   p {
     font-size: 16px;
     color: #444;
     margin-bottom: 20px;
+    text-align: center;
   }
    .search {
     width: 100%;
@@ -217,5 +249,24 @@ let guides = [
   .remove-btn:hover {
     background: #8f2d2d;
   }
+  .message {
+  margin: 15px 0;
+  padding: 12px;
+  background: #eef7ee;
+  border-left: 4px solid #2e7d32;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.message button {
+  background: #2e7d32;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
 </style>
 
